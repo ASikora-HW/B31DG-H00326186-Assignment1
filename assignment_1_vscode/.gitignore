@@ -1,0 +1,42 @@
+# General
+*.log
+*.tmp
+*.tmp.*
+tmp
+
+# ESP-IDF specific
+build/
+sdkconfig
+sdkconfig.old
+sdkconfig.defaults
+
+# Visual Studio Code specific
+.vscode/
+
+# Project specific
+*.DS_Store
+*.pio
+*.pioenvs
+*.piolibdeps
+*.cache
+.pio/
+.pioenvs/
+.piolibdeps/
+.cache/
+__pycache__/
+*.py[cod]
+*$py.class
+.gitignore.bak
+
+
+
+# Ignore flash files
+*.bin
+*.elf
+*.map
+
+# Ignore Python virtual environments
+venv/
+.env/
+
+.devcontainer/
