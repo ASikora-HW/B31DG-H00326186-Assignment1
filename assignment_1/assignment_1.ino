@@ -70,14 +70,20 @@ void outputEnable() {
   delayMicroseconds(SYNC_ON_TIME);
   digitalWrite(SIGNAL_B_PIN, LOW);
 
-  //Default signal generation
-  for (int i = 0; i < PULSE_COUNT; i++) {
-    digitalWrite(SIGNAL_A_PIN, HIGH);
-    delayMicroseconds(PULSE_DURATION + (i * (50 * TIME_SLOW_FACTOR)));  //increase pulse duration for each pulse after 1st
-    digitalWrite(SIGNAL_A_PIN, LOW);
-
-    // Wait between pulses if not the last pulse
-    if (i < PULSE_COUNT - 1) {
+  if (!alternateMode) { //Default signal generation
+    for (int i = 0; i < PULSE_COUNT; i++) {
+      // Generate DATA pulse
+      digitalWrite(SIGNAL_A_PIN, HIGH);
+      delayMicroseconds(PULSE_DURATION + (i * (50 * TIME_SLOW_FACTOR)));  //increase pulse duration for each pulse after 1st
+      digitalWrite(SIGNAL_A_PIN, LOW);
+      delayMicroseconds(BETWEEN_PULSE_OFF_TIME);
+    }
+  } else if (alternateMode) { //Alternate signal generation
+    //changed loop to decrement i to have durations swap for alternate mode
+    for (int i = PULSE_COUNT; i > 0; i--) {
+      digitalWrite(SIGNAL_A_PIN, HIGH);
+      delayMicroseconds(PULSE_DURATION + (i * (50 * TIME_SLOW_FACTOR)));  //decrease pulse duration for each pulse after 1st
+      digitalWrite(SIGNAL_A_PIN, LOW);
       delayMicroseconds(BETWEEN_PULSE_OFF_TIME);
     }
   }
