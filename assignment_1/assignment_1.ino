@@ -19,7 +19,6 @@
 #define PULSE_COUNT (11 + 4)
 #define IDLE_TIME ((12 * 500) * TIME_SLOW_FACTOR)  // microseconds
 #define SYNC_ON_TIME (50 * TIME_SLOW_FACTOR)       // microseconds
-#define MODE 2
 
 // Signal variables
 bool outputEnabled = false;
